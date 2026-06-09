@@ -1,0 +1,37 @@
+Jun 09 13:30:56 raspberrypi-slave1 python3[760483]: E2EL: 20.35 ms | Command: OPEN
+Jun 09 13:30:56 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:01 raspberrypi-slave1 python3[760483]: E2EL: 18.33 ms | Command: OPEN
+Jun 09 13:31:01 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:06 raspberrypi-slave1 python3[760483]: E2EL: 29.03 ms | Command: OPEN
+Jun 09 13:31:06 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:11 raspberrypi-slave1 python3[760483]: E2EL: 23.90 ms | Command: CLOSE
+Jun 09 13:31:11 raspberrypi-slave1 python3[760483]: Moving servo to 0 (CLOSE)
+Jun 09 13:31:16 raspberrypi-slave1 python3[760483]: E2EL: 23.05 ms | Command: OPEN
+Jun 09 13:31:16 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:21 raspberrypi-slave1 python3[760483]: E2EL: 22.32 ms | Command: OPEN
+Jun 09 13:31:21 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:26 raspberrypi-slave1 python3[760483]: E2EL: 23.84 ms | Command: OPEN
+Jun 09 13:31:26 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:31 raspberrypi-slave1 python3[760483]: E2EL: 22.06 ms | Command: CLOSE
+Jun 09 13:31:31 raspberrypi-slave1 python3[760483]: Moving servo to 0 (CLOSE)
+Jun 09 13:31:36 raspberrypi-slave1 python3[760483]: E2EL: 29.20 ms | Command: CLOSE
+Jun 09 13:31:36 raspberrypi-slave1 python3[760483]: Moving servo to 0 (CLOSE)
+Jun 09 13:31:41 raspberrypi-slave1 python3[760483]: E2EL: 22.82 ms | Command: CLOSE
+Jun 09 13:31:41 raspberrypi-slave1 python3[760483]: Moving servo to 0 (CLOSE)
+Jun 09 13:31:46 raspberrypi-slave1 python3[760483]: E2EL: 22.31 ms | Command: OPEN
+Jun 09 13:31:46 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:51 raspberrypi-slave1 python3[760483]: E2EL: 85.45 ms | Command: OPEN
+Jun 09 13:31:51 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:31:56 raspberrypi-slave1 python3[760483]: E2EL: 22.06 ms | Command: OPEN
+Jun 09 13:31:56 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:01 raspberrypi-slave1 python3[760483]: E2EL: 22.54 ms | Command: OPEN
+Jun 09 13:32:01 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:06 raspberrypi-slave1 python3[760483]: E2EL: 59.07 ms | Command: OPEN
+Jun 09 13:32:06 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:11 raspberrypi-slave1 python3[760483]: E2EL: 23.69 ms | Command: OPEN
+Jun 09 13:32:11 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:16 raspberrypi-slave1 python3[760483]: E2EL: 25.15 ms | Command: OPEN
+Jun 09 13:32:16 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:21 raspberrypi-slave1 python3[760483]: E2EL: 85.63 ms | Command: OPEN
+Jun 09 13:32:21 raspberrypi-slave1 python3[760483]: Moving servo to 180 (OPEN)
+Jun 09 13:32:26 raspberrypi-slave1 python3[760483]: E2EL: 106.47 ms | Command: OPEN

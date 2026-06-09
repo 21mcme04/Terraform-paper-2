@@ -1,0 +1,605 @@
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mProvider development overrides are in effect[0m
+[33m│[0m [0m
+[33m│[0m [0m[0mThe following provider development overrides are set in the CLI
+[33m│[0m [0mconfiguration:
+[33m│[0m [0m - saathvikk/fog in /home/microstack/paper-2/terraform-provider-fog
+[33m│[0m [0m
+[33m│[0m [0mThe behavior may therefore not match any released version of the provider
+[33m│[0m [0mand applying changes may cause the state to become incompatible with
+[33m│[0m [0mpublished releases.
+[33m╵[0m[0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+ [36m<=[0m read (data resources)[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.actuator_daemon.fog_systemd_service.daemon[0m will be created
+[0m  [32m+[0m[0m resource "fog_systemd_service" "daemon" {
+      [32m+[0m[0m environment    = {
+          [32m+[0m[0m "MQTT_BROKER" = "192.168.0.204"
+          [32m+[0m[0m "MQTT_PORT"   = "31883"
+        }
+      [32m+[0m[0m exec_start     = "/usr/bin/python3 /home/pi2/services/actuator_service.py"
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m node_address   = "192.168.0.237"
+      [32m+[0m[0m node_user      = "pi2"
+      [32m+[0m[0m service_name   = "actuator_service"
+      [32m+[0m[0m unit_file_hash = "9b32429e2c549c7068b16204035f9a1bc6501bce93998c1a6f12d9277d77bec3"
+    }
+
+[1m  # module.actuator_daemon.terraform_data.prepare_node[0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "prepare_node" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m input            = {
+          [32m+[0m[0m host         = "192.168.0.237"
+          [32m+[0m[0m service_name = "actuator_service"
+          [32m+[0m[0m user         = "pi2"
+        }
+      [32m+[0m[0m output           = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "https://gist.githubusercontent.com/21mcme04/ffcfc4f88ca37fc0ab03c4cc2a1ef254/raw/fb7d6a955105cc29d1f6d8ba1dbe7f6f9b577b5e/actuator-soil-servo.py",
+        ]
+    }
+
+[1m  # module.infrastructure.data.local_file.k3s_token[0m will be read during apply
+  # (depends on a resource or a module with changes pending)
+[0m [36m<=[0m[0m data "local_file" "k3s_token" {
+      [32m+[0m[0m content              = (known after apply)
+      [32m+[0m[0m content_base64       = (known after apply)
+      [32m+[0m[0m content_base64sha256 = (known after apply)
+      [32m+[0m[0m content_base64sha512 = (known after apply)
+      [32m+[0m[0m content_md5          = (known after apply)
+      [32m+[0m[0m content_sha1         = (known after apply)
+      [32m+[0m[0m content_sha256       = (known after apply)
+      [32m+[0m[0m content_sha512       = (known after apply)
+      [32m+[0m[0m filename             = "./k3s_token.txt"
+      [32m+[0m[0m id                   = (known after apply)
+    }
+
+[1m  # module.infrastructure.terraform_data.fetch_config[0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "fetch_config" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "192.168.0.204",
+        ]
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_master[0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "k3s_master" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m input            = {
+          [32m+[0m[0m host = "192.168.0.204"
+          [32m+[0m[0m user = "pi1"
+        }
+      [32m+[0m[0m output           = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "192.168.0.204",
+        ]
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_workers["actuator_node"][0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "k3s_workers" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m input            = {
+          [32m+[0m[0m host = "192.168.0.237"
+          [32m+[0m[0m user = "pi2"
+        }
+      [32m+[0m[0m output           = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "192.168.0.237",
+        ]
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_workers["publisher_node"][0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "k3s_workers" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m input            = {
+          [32m+[0m[0m host = "192.168.0.76"
+          [32m+[0m[0m user = "pi3"
+        }
+      [32m+[0m[0m output           = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "192.168.0.76",
+        ]
+    }
+
+[1m  # module.publisher_daemon.fog_systemd_service.daemon[0m will be created
+[0m  [32m+[0m[0m resource "fog_systemd_service" "daemon" {
+      [32m+[0m[0m environment    = {
+          [32m+[0m[0m "MQTT_BROKER" = "192.168.0.204"
+          [32m+[0m[0m "MQTT_PORT"   = "31883"
+        }
+      [32m+[0m[0m exec_start     = "/usr/bin/python3 /home/pi3/services/mqtt_publisher_service.py"
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m node_address   = "192.168.0.76"
+      [32m+[0m[0m node_user      = "pi3"
+      [32m+[0m[0m service_name   = "mqtt_publisher_service"
+      [32m+[0m[0m unit_file_hash = "f2e0399290fb506540eab096df817d396d4498d54f905093451e9a9908ec366c"
+    }
+
+[1m  # module.publisher_daemon.terraform_data.prepare_node[0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "prepare_node" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m input            = {
+          [32m+[0m[0m host         = "192.168.0.76"
+          [32m+[0m[0m service_name = "mqtt_publisher_service"
+          [32m+[0m[0m user         = "pi3"
+        }
+      [32m+[0m[0m output           = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "https://gist.githubusercontent.com/21mcme04/acdea1dfc4483d79a3510945ef201e64/raw/383ed9b38c261a8e7d63ed40303ca65f3fae5517/publisher-soil-moisture.py",
+        ]
+    }
+
+[1m  # module.soil_moisture_k3s.terraform_data.deploy_k3s_stack[0m will be created
+[0m  [32m+[0m[0m resource "terraform_data" "deploy_k3s_stack" {
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m triggers_replace = [
+          [32m+[0m[0m "https://gist.githubusercontent.com/21mcme04/68c7edc0b0c5653ecd2e138683f3d568/raw/2021060c1bf05e8d5cd1599ad28d872b9a94fd6d/k3s-fogdeft-soil_moisture-manifest.yaml",
+        ]
+    }
+
+[1mPlan:[0m [0m9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  [32m+[0m[0m master_ip = "192.168.0.204"
+  [32m+[0m[0m status    = "Deployment complete. Publisher, Actuator, and Broker are running."
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Creating...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Provisioning with 'file'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Host: 192.168.0.204
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  User: pi1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m>>> [K3s Master] Checking existing installation...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m>>> [K3s Master] Installing Control Plane...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Finding release for channel stable
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Using v1.35.5+k3s1 as release
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/sha256sum-arm64.txt
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/k3s-arm64
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Verifying binary download
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Installing k3s to /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Finding available k3s-selinux versions
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /usr/bin/kubectl
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/crictl symlink to k3s, command exists in PATH at /usr/bin/crictl
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  systemd: Enabling k3s unit
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCreated symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[INFO]  systemd: Starting k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Still creating... [00m20s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Still creating... [00m30s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m>>> [K3s Master] Enabling Service...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Still creating... [00m40s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m>>> [K3s Master] Waiting for Node Token...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m>>> [K3s Master] Ready.
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Creation complete after 41s [id=e17e0475-953c-f48e-fa64-74203b23761d][0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Creating...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Provisioning with 'local-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config (local-exec):[0m [0mExecuting: ["/bin/sh" "-c" "scp -o StrictHostKeyChecking=no pi1@192.168.0.204:/etc/rancher/k3s/k3s.yaml ./kubeconfig.yaml && sed -i 's/127.0.0.1/192.168.0.204/g' ./kubeconfig.yaml"]
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Provisioning with 'local-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config (local-exec):[0m [0mExecuting: ["/bin/sh" "-c" "ssh -o StrictHostKeyChecking=no pi1@192.168.0.204 'sudo cat /var/lib/rancher/k3s/server/node-token' > ./k3s_token.txt"]
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Creation complete after 1s [id=cfb0336c-d953-44cc-1678-8f61521dac49][0m
+[0m[1mmodule.infrastructure.data.local_file.k3s_token: Reading...[0m[0m
+[0m[1mmodule.infrastructure.data.local_file.k3s_token: Read complete after 0s [id=9ef619dd2c6a4bfaf61c38ea442e0cca2872d815][0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Creating...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Creating...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Provisioning with 'file'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Provisioning with 'file'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Host: 192.168.0.76
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  User: pi3
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Host: 192.168.0.237
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  User: pi2
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m>>> [K3s Worker] Checking existing installation...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m>>> [K3s Worker] Joining Cluster at 192.168.0.204...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m>>> [K3s Worker] Checking existing installation...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m>>> [K3s Worker] Joining Cluster at 192.168.0.204...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Finding release for channel stable
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Finding release for channel stable
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Using v1.35.5+k3s1 as release
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/sha256sum-arm64.txt
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/k3s-arm64
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Using v1.35.5+k3s1 as release
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/sha256sum-arm64.txt
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.35.5%2Bk3s1/k3s-arm64
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Verifying binary download
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Installing k3s to /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Finding available k3s-selinux versions
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[WARN]  Failed to get available versions of k3s-selinux..defaulting to k3s-selinux-1.2-2.el9.noarch.rpm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /usr/bin/kubectl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/crictl symlink to k3s, command exists in PATH at /usr/bin/crictl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  Creating uninstall script /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  env: Creating environment file /etc/systemd/system/k3s-agent.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  systemd: Creating service file /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  systemd: Enabling k3s-agent unit
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mCreated symlink /etc/systemd/system/multi-user.target.wants/k3s-agent.service → /etc/systemd/system/k3s-agent.service.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Still creating... [00m20s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [00m20s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[INFO]  systemd: Starting k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Verifying binary download
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Installing k3s to /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Finding available k3s-selinux versions
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /usr/bin/kubectl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/crictl symlink to k3s, command exists in PATH at /usr/bin/crictl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  Creating uninstall script /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  env: Creating environment file /etc/systemd/system/k3s-agent.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  systemd: Creating service file /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  systemd: Enabling k3s-agent unit
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mCreated symlink /etc/systemd/system/multi-user.target.wants/k3s-agent.service → /etc/systemd/system/k3s-agent.service.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [00m30s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Still creating... [00m30s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[INFO]  systemd: Starting k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Still creating... [00m40s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [00m40s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m>>> [K3s Worker] Waiting for Agent to start...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m>>> [K3s Worker] Joined Successfully.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Creation complete after 42s [id=09943f9e-79e6-e586-ea1c-44d968a27326][0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [00m50s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Still creating... [01m00s elapsed][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m>>> [K3s Worker] Waiting for Agent to start...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m>>> [K3s Worker] Joined Successfully.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Creation complete after 1m2s [id=0e5cdf7b-50a4-8d2c-9dd9-137c2e0e477e][0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Creating...[0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Provisioning with 'local-exec'...[0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mExecuting: ["/bin/sh" "-c" "      export KUBECONFIG=./kubeconfig.yaml\n      kubectl apply -f \"https://gist.githubusercontent.com/21mcme04/68c7edc0b0c5653ecd2e138683f3d568/raw/2021060c1bf05e8d5cd1599ad28d872b9a94fd6d/k3s-fogdeft-soil_moisture-manifest.yaml\"\n"]
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mnamespace/fogdeft-stack created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mdeployment.apps/mqtt-broker created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mservice/mqtt-broker created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mservice/mqtt-broker-external created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mdeployment.apps/mqtt-subscriber created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mpersistentvolumeclaim/mosquitto-data-pvc created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mpersistentvolumeclaim/mosquitto-logs-pvc created
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Creation complete after 2s [id=428e2a95-8000-c99a-117c-426c7fb4191c][0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Creating...[0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Creating...[0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Host: 192.168.0.76
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  User: pi3
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Host: 192.168.0.237
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  User: pi2
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnected!
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnected!
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:1 http://deb.debian.org/debian bookworm InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:2 http://deb.debian.org/debian-security bookworm-security InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:3 http://deb.debian.org/debian bookworm-updates InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:1 http://deb.debian.org/debian bookworm InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:2 http://deb.debian.org/debian-security bookworm-security InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:3 http://deb.debian.org/debian bookworm-updates InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mIgn:4 https://pkg.jenkins.io/debian-stable binary/ InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:5 https://pkg.jenkins.io/debian-stable binary/ Release [2,044 B]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mIgn:4 https://pkg.jenkins.io/debian-stable binary/ InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:5 https://pkg.jenkins.io/debian-stable binary/ Release [2,044 B]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:6 https://pkg.jenkins.io/debian-stable binary/ Release.gpg [833 B]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:6 https://pkg.jenkins.io/debian-stable binary/ Release.gpg [833 B]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to download.docker.com]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Waiting for headers] [Waiting for h
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Waiting for headers]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:8 https://download.docker.com/linux/debian bookworm InRelease [46.6 kB]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connected to download.docker.com (1
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mGet:8 https://download.docker.com/linux/raspbian bookworm InRelease [26.3 kB]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [8 InRelease 32.3 kB/46.6 kB 69%]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [8 InRelease 26.3 kB/26.3 kB 100%]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mErr:6 https://pkg.jenkins.io/debian-stable binary/ Release.gpg
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mErr:6 https://pkg.jenkins.io/debian-stable binary/ Release.gpg
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:9 http://archive.raspberrypi.com/debian bookworm InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:9 http://archive.raspberrypi.com/debian bookworm InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Connecting to prod-cdn.packages.k8s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:7 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.28/deb  InRelease
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHit:7 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.28/deb  InRelease
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mFetched 27.1 kB in 5s (5,100 B/s)
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0% [Working]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mFetched 47.4 kB in 5s (8,709 B/s)
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 20%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 21%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 34%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 34%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 34%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 34%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 39%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 40%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 63%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 64%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 67%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 67%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 67%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 67%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 92%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 92%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 93%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 93%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 94%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 94%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 97%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 97%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 91%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 93%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 93%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 94%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 94%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 95%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 98%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 98%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 99%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... Done
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 97%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 97%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 97%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: Failed to fetch https://pkg.jenkins.io/debian-stable/binary/Release.gpg  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: Some index files failed to download. They have been ignored, or old ones used instead.
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 100%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... Done
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 98%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 98%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... Done
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: Failed to fetch https://pkg.jenkins.io/debian-stable/binary/Release.gpg  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7198F4B714ABFC68
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mW: Some index files failed to download. They have been ignored, or old ones used instead.
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... 100%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading package lists... Done
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 98%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... Done
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... Done
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mpython3-pip is already the newest version (23.0.1+dfsg-1+rpt1).
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 50%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... 90%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mBuilding dependency tree... Done
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... 0%
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mReading state information... Done
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mpython3-pip is already the newest version (23.0.1+dfsg-1+rpt1).
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0 upgraded, 0 newly installed, 0 to remove and 277 not upgraded.
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mThe following packages were automatically installed and are no longer required:
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  criu libnet1 libprotobuf-c1
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  python3-protobuf
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mUse 'sudo apt autoremove' to remove them.
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m0 upgraded, 0 newly installed, 0 to remove and 282 not upgraded.
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mLooking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mRequirement already satisfied: paho-mqtt in /usr/local/lib/python3.11/dist-packages (2.1.0)
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mRequirement already satisfied: RPi.GPIO in /usr/local/lib/python3.11/dist-packages (0.7.1)
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mLooking in indexes: https://pypi.org/simple, https://www.piwheels.org/simple
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mRequirement already satisfied: paho-mqtt in /usr/local/lib/python3.11/dist-packages (2.1.0)
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mRequirement already satisfied: RPi.GPIO in /usr/local/lib/python3.11/dist-packages (0.7.1)
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m[33mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv[0m[33m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m--2026-06-09 13:30:23--  https://gist.githubusercontent.com/21mcme04/acdea1dfc4483d79a3510945ef201e64/raw/383ed9b38c261a8e7d63ed40303ca65f3fae5517/publisher-soil-moisture.py
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mResolving gist.githubusercontent.com (gist.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to gist.githubusercontent.com (gist.githubusercontent.com)|185.199.111.133|:443... connected.
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHTTP request sent, awaiting response...
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m200 OK
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mLength: 1672 (1.6K) [text/plain]
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mSaving to: ‘/home/pi3/services/mqtt_publisher_service.py’
+
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m      /home/   0%       0  --.-KB/s
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m/home/pi3/se 100%   1.63K  --.-KB/s    in 0.001s
+
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m2026-06-09 13:30:23 (2.48 MB/s) - ‘/home/pi3/services/mqtt_publisher_service.py’ saved [1672/1672]
+
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Creation complete after 16s [id=422ce270-d5e4-6e5b-8aeb-e6399c0608d5][0m
+[0m[1mmodule.publisher_daemon.fog_systemd_service.daemon: Creating...[0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m[33mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv[0m[33m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m--2026-06-09 13:30:24--  https://gist.githubusercontent.com/21mcme04/ffcfc4f88ca37fc0ab03c4cc2a1ef254/raw/fb7d6a955105cc29d1f6d8ba1dbe7f6f9b577b5e/actuator-soil-servo.py
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mResolving gist.githubusercontent.com (gist.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to gist.githubusercontent.com (gist.githubusercontent.com)|185.199.108.133|:443... connected.
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mHTTP request sent, awaiting response...
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m200 OK
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mLength: 2425 (2.4K) [text/plain]
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mSaving to: ‘/home/pi2/services/actuator_service.py’
+
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m      /home/   0%       0  --.-KB/s
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m/home/pi2/se 100%   2.37K  --.-KB/s    in 0.003s
+
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m2026-06-09 13:30:25 (925 KB/s) - ‘/home/pi2/services/actuator_service.py’ saved [2425/2425]
+
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Creation complete after 17s [id=517bc1f8-ffa3-534c-211d-228ce5d3885e][0m
+[0m[1mmodule.actuator_daemon.fog_systemd_service.daemon: Creating...[0m[0m
+[0m[1mmodule.publisher_daemon.fog_systemd_service.daemon: Creation complete after 1s [id=192.168.0.76::mqtt_publisher_service][0m
+[0m[1mmodule.actuator_daemon.fog_systemd_service.daemon: Creation complete after 2s [id=192.168.0.237::actuator_service][0m
+[0m[1m[32m
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mmaster_ip = "192.168.0.204"
+status = "Deployment complete. Publisher, Actuator, and Broker are running."
+
+real	2m5.427s
+user	0m1.051s
+sys	0m0.323s

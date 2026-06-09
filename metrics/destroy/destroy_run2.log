@@ -1,0 +1,615 @@
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mProvider development overrides are in effect[0m
+[33m│[0m [0m
+[33m│[0m [0m[0mThe following provider development overrides are set in the CLI
+[33m│[0m [0mconfiguration:
+[33m│[0m [0m - saathvikk/fog in /home/microstack/paper-2/terraform-provider-fog
+[33m│[0m [0m
+[33m│[0m [0mThe behavior may therefore not match any released version of the provider
+[33m│[0m [0mand applying changes may cause the state to become incompatible with
+[33m│[0m [0mpublished releases.
+[33m╵[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Refreshing state... [id=ba0e90af-7738-8121-f40d-620a7b31d9b1][0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Refreshing state... [id=ff06cef6-67ef-8cdf-d659-21e7d7c25652][0m
+[0m[1mmodule.infrastructure.data.local_file.k3s_token: Reading...[0m[0m
+[0m[1mmodule.infrastructure.data.local_file.k3s_token: Read complete after 0s [id=781760593ebdd0530148751bef97ef20f86aecf7][0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Refreshing state... [id=e5688904-b727-3d31-41ad-9d1afa6b4d9b][0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Refreshing state... [id=293ce86e-8f74-78d9-9901-eed10912e793][0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Refreshing state... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e][0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Refreshing state... [id=96210734-a99c-2bf7-4496-be4c868412bc][0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Refreshing state... [id=54b1ffe5-b1e1-51ba-34a5-677a33131f63][0m
+[0m[1mmodule.actuator_daemon.fog_systemd_service.daemon: Refreshing state... [id=192.168.0.237::actuator_service][0m
+[0m[1mmodule.publisher_daemon.fog_systemd_service.daemon: Refreshing state... [id=192.168.0.76::mqtt_publisher_service][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.actuator_daemon.fog_systemd_service.daemon[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "fog_systemd_service" "daemon" {
+      [31m-[0m[0m environment    = {
+          [31m-[0m[0m "MQTT_BROKER" = "192.168.0.204"
+          [31m-[0m[0m "MQTT_PORT"   = "31883"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m exec_start     = "/usr/bin/python3 /home/pi2/services/actuator_service.py" [90m-> null[0m[0m
+      [31m-[0m[0m id             = "192.168.0.237::actuator_service" [90m-> null[0m[0m
+      [31m-[0m[0m node_address   = "192.168.0.237" [90m-> null[0m[0m
+      [31m-[0m[0m node_user      = "pi2" [90m-> null[0m[0m
+      [31m-[0m[0m service_name   = "actuator_service" [90m-> null[0m[0m
+      [31m-[0m[0m unit_file_hash = "9b32429e2c549c7068b16204035f9a1bc6501bce93998c1a6f12d9277d77bec3" [90m-> null[0m[0m
+    }
+
+[1m  # module.actuator_daemon.terraform_data.prepare_node[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "prepare_node" {
+      [31m-[0m[0m id               = "96210734-a99c-2bf7-4496-be4c868412bc" [90m-> null[0m[0m
+      [31m-[0m[0m input            = {
+          [31m-[0m[0m host         = "192.168.0.237"
+          [31m-[0m[0m service_name = "actuator_service"
+          [31m-[0m[0m user         = "pi2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m output           = {
+          [31m-[0m[0m host         = "192.168.0.237"
+          [31m-[0m[0m service_name = "actuator_service"
+          [31m-[0m[0m user         = "pi2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "https://gist.githubusercontent.com/21mcme04/ffcfc4f88ca37fc0ab03c4cc2a1ef254/raw/fb7d6a955105cc29d1f6d8ba1dbe7f6f9b577b5e/actuator-soil-servo.py",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.infrastructure.terraform_data.fetch_config[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "fetch_config" {
+      [31m-[0m[0m id               = "ff06cef6-67ef-8cdf-d659-21e7d7c25652" [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "192.168.0.204",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_master[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "k3s_master" {
+      [31m-[0m[0m id               = "ba0e90af-7738-8121-f40d-620a7b31d9b1" [90m-> null[0m[0m
+      [31m-[0m[0m input            = {
+          [31m-[0m[0m host = "192.168.0.204"
+          [31m-[0m[0m user = "pi1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m output           = {
+          [31m-[0m[0m host = "192.168.0.204"
+          [31m-[0m[0m user = "pi1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "192.168.0.204",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_workers["actuator_node"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "k3s_workers" {
+      [31m-[0m[0m id               = "e5688904-b727-3d31-41ad-9d1afa6b4d9b" [90m-> null[0m[0m
+      [31m-[0m[0m input            = {
+          [31m-[0m[0m host = "192.168.0.237"
+          [31m-[0m[0m user = "pi2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m output           = {
+          [31m-[0m[0m host = "192.168.0.237"
+          [31m-[0m[0m user = "pi2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "192.168.0.237",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.infrastructure.terraform_data.k3s_workers["publisher_node"][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "k3s_workers" {
+      [31m-[0m[0m id               = "293ce86e-8f74-78d9-9901-eed10912e793" [90m-> null[0m[0m
+      [31m-[0m[0m input            = {
+          [31m-[0m[0m host = "192.168.0.76"
+          [31m-[0m[0m user = "pi3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m output           = {
+          [31m-[0m[0m host = "192.168.0.76"
+          [31m-[0m[0m user = "pi3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "192.168.0.76",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.publisher_daemon.fog_systemd_service.daemon[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "fog_systemd_service" "daemon" {
+      [31m-[0m[0m environment    = {
+          [31m-[0m[0m "MQTT_BROKER" = "192.168.0.204"
+          [31m-[0m[0m "MQTT_PORT"   = "31883"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m exec_start     = "/usr/bin/python3 /home/pi3/services/mqtt_publisher_service.py" [90m-> null[0m[0m
+      [31m-[0m[0m id             = "192.168.0.76::mqtt_publisher_service" [90m-> null[0m[0m
+      [31m-[0m[0m node_address   = "192.168.0.76" [90m-> null[0m[0m
+      [31m-[0m[0m node_user      = "pi3" [90m-> null[0m[0m
+      [31m-[0m[0m service_name   = "mqtt_publisher_service" [90m-> null[0m[0m
+      [31m-[0m[0m unit_file_hash = "f2e0399290fb506540eab096df817d396d4498d54f905093451e9a9908ec366c" [90m-> null[0m[0m
+    }
+
+[1m  # module.publisher_daemon.terraform_data.prepare_node[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "prepare_node" {
+      [31m-[0m[0m id               = "54b1ffe5-b1e1-51ba-34a5-677a33131f63" [90m-> null[0m[0m
+      [31m-[0m[0m input            = {
+          [31m-[0m[0m host         = "192.168.0.76"
+          [31m-[0m[0m service_name = "mqtt_publisher_service"
+          [31m-[0m[0m user         = "pi3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m output           = {
+          [31m-[0m[0m host         = "192.168.0.76"
+          [31m-[0m[0m service_name = "mqtt_publisher_service"
+          [31m-[0m[0m user         = "pi3"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "https://gist.githubusercontent.com/21mcme04/acdea1dfc4483d79a3510945ef201e64/raw/383ed9b38c261a8e7d63ed40303ca65f3fae5517/publisher-soil-moisture.py",
+        ] [90m-> null[0m[0m
+    }
+
+[1m  # module.soil_moisture_k3s.terraform_data.deploy_k3s_stack[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "terraform_data" "deploy_k3s_stack" {
+      [31m-[0m[0m id               = "6f0ec0ad-76c7-03b8-862e-80c94b9ad77e" [90m-> null[0m[0m
+      [31m-[0m[0m triggers_replace = [
+          [31m-[0m[0m "https://gist.githubusercontent.com/21mcme04/68c7edc0b0c5653ecd2e138683f3d568/raw/2021060c1bf05e8d5cd1599ad28d872b9a94fd6d/k3s-fogdeft-soil_moisture-manifest.yaml",
+        ] [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 9 to destroy.
+
+Changes to Outputs:
+  [31m-[0m[0m master_ip = "192.168.0.204" [90m-> null[0m[0m
+  [31m-[0m[0m status    = "Deployment complete. Publisher, Actuator, and Broker are running." [90m-> null[0m[0m
+[0m[1mmodule.publisher_daemon.fog_systemd_service.daemon: Destroying... [id=192.168.0.76::mqtt_publisher_service][0m[0m
+[0m[1mmodule.actuator_daemon.fog_systemd_service.daemon: Destroying... [id=192.168.0.237::actuator_service][0m[0m
+[0m[1mmodule.publisher_daemon.fog_systemd_service.daemon: Destruction complete after 1s[0m
+[0m[1mmodule.actuator_daemon.fog_systemd_service.daemon: Destruction complete after 2s[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Destroying... [id=54b1ffe5-b1e1-51ba-34a5-677a33131f63][0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Destroying... [id=96210734-a99c-2bf7-4496-be4c868412bc][0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Host: 192.168.0.76
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  User: pi3
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Host: 192.168.0.237
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  User: pi2
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnected!
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node (remote-exec):[0m [0mConnected!
+[0m[1mmodule.publisher_daemon.terraform_data.prepare_node: Destruction complete after 0s[0m
+[0m[1mmodule.actuator_daemon.terraform_data.prepare_node: Destruction complete after 0s[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Destroying... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e][0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Provisioning with 'local-exec'...[0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mExecuting: ["/bin/sh" "-c" "export KUBECONFIG=./kubeconfig.yaml && kubectl delete -f https://gist.githubusercontent.com/21mcme04/68c7edc0b0c5653ecd2e138683f3d568/raw/2021060c1bf05e8d5cd1599ad28d872b9a94fd6d/k3s-fogdeft-soil_moisture-manifest.yaml --ignore-not-found=true"]
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mnamespace "fogdeft-stack" deleted
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mdeployment.apps "mqtt-broker" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mservice "mqtt-broker" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mservice "mqtt-broker-external" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mdeployment.apps "mqtt-subscriber" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mpersistentvolumeclaim "mosquitto-data-pvc" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack (local-exec):[0m [0mpersistentvolumeclaim "mosquitto-logs-pvc" deleted from fogdeft-stack namespace
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Still destroying... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e, 00m10s elapsed][0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Still destroying... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e, 00m20s elapsed][0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Still destroying... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e, 00m30s elapsed][0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Still destroying... [id=6f0ec0ad-76c7-03b8-862e-80c94b9ad77e, 00m40s elapsed][0m[0m
+[0m[1mmodule.soil_moisture_k3s.terraform_data.deploy_k3s_stack: Destruction complete after 47s[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Destroying... [id=293ce86e-8f74-78d9-9901-eed10912e793][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Destroying... [id=e5688904-b727-3d31-41ad-9d1afa6b4d9b][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Host: 192.168.0.76
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  User: pi3
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Host: 192.168.0.237
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  User: pi2
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ 1000 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ exec sudo --preserve-env=K3S_DATA_DIR /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ 1000 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ exec sudo --preserve-env=K3S_DATA_DIR /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ 0 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ K3S_DATA_DIR=/var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -s /etc/systemd/system/k3s-agent.service ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ 0 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ K3S_DATA_DIR=/var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ basename /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ systemctl stop k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -s /etc/systemd/system/k3s-agent.service ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ basename /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ systemctl stop k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -x /etc/init.d/k3s* ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -x /etc/init.d/k3s* ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ killtree 740590
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ killtree 699247 699257
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ kill -9 740590 740614 740905 741011
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/c056e211ef75f011ed0a4c6d65c728c0cd6ce521bb61114703095490f3455ce2/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/74969ee1d19af15b1c8b80d23e54362d02fa40cf2ce9d0878a771517db717f17/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/52a2cca8c59df545e1af3d0de9e63d615d6ec39bfad8a1cdf5950d8490ff16b6/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/c056e211ef75f011ed0a4c6d65c728c0cd6ce521bb61114703095490f3455ce2/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/pods
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/plugins
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /run/netns/cni-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-e47c9f95-7d69-0818-2e1b-6bf8c4029405
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ kill -9 699247 699298 700062 699257 699306 699774 699816
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/d22d43e25d2b0133054754983e079b13a0ed567d16ccdfdd594050c8944ab915/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip netns show
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ + grepxargs cni- -r
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m -t -n 1 ip netns delete
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ remove_interfaces
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link show
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep master cni0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete cni0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/c26876347e0448ebfe47bef811eb9ed33d8b445792f0f482f4c6e6002ccb567a/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/8a994e29f3b4ad54eb2fb3440e71bd9275b4b654cba438b141576f1b6af9a3e9/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/7ecb2b600f6efbee079d84c262a2e23cf7f3ee888a8acde96df532093a2a6c59/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/0e750aedf86c373b2f761661db73af7c61bce4f1da684ec5c64c5093d6f7f8bc/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/c26876347e0448ebfe47bef811eb9ed33d8b445792f0f482f4c6e6002ccb567a/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/8a994e29f3b4ad54eb2fb3440e71bd9275b4b654cba438b141576f1b6af9a3e9/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/pods
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /var/lib/kubelet/pods/e4da8e78-8a5d-4187-bcfe-dc7ecae490f1/volumes/kubernetes.io~projected/kube-api-access-p4527
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete flannel.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/plugins
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ do_unmount_and_remove /run/netns/cni-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-e989b8bd-008d-cb1b-1368-cd08aed68e4f
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-7be4863f-fb7f-1de9-8e83-ed9d02d0d334
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip netns show
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ + grep cni-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mxargs -r -t -n 1 ip netns delete
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ remove_interfaces
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link show
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ + read ignore iface ignoregrep master cni0
+
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ iface=veth3349ec5c
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -z veth3349ec5c ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete veth3349ec5c
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete flannel-v6.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mCannot find device "flannel-v6.1"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete kube-ipvs0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mCannot find device "kube-ipvs0"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete flannel-wg
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mCannot find device "flannel-wg"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip link delete flannel-wg-v6
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete cni0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mCannot find device "flannel-wg-v6"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ command -v tailscale
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -n  ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/cni/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ iptables-save
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -v KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ + grep -iv flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0miptables-restore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete flannel.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip6tables-save
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -v KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -iv flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ip6tables-restore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete flannel-v6.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mCannot find device "flannel-v6.1"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete kube-ipvs0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mCannot find device "kube-ipvs0"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete flannel-wg
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mCannot find device "flannel-wg"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip link delete flannel-wg-v6
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mCannot find device "flannel-wg-v6"
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ command -v systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m/usr/bin/systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ systemctl disable k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ command -v tailscale
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -n  ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/cni/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ + iptables-savegrep+ grep -v
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ iptables-restore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ grep -iv flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0mRemoved "/etc/systemd/system/multi-user.target.wants/k3s-agent.service".
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip6tables-save
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ grep -v KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ grep -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ grep -iv flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ip6tables-restore
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ command -v systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m/usr/bin/systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ systemctl disable k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0mRemoved "/etc/systemd/system/multi-user.target.wants/k3s-agent.service".
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ systemctl reset-failed k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[0;1;31mFailed to reset failed state of unit k3s-agent.service: Unit k3s-agent.service not loaded.[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ systemctl daemon-reload
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ systemctl reset-failed k3s-agent
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[0;1;31mFailed to reset failed state of unit k3s-agent.service: Unit k3s-agent.service not loaded.[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ systemctl daemon-reload
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ command -v rc-update
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s-agent.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ trap remove_uninstall EXIT
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/kubectl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/crictl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/ctr ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /etc/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /run/flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ clean_mounted_directory /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ grep -q  /var/lib/rancher/k3s /proc/mounts
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ command -v rc-update
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s-agent.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s-agent.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ trap remove_uninstall EXIT
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/kubectl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/crictl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -L /usr/local/bin/ctr ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /etc/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /run/flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ clean_mounted_directory /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ grep -q  /var/lib/rancher/k3s /proc/mounts
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ return 0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/kubelet
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rpm_ostree_uninstall_cmd=rpm-ostree uninstall --idempotent k3s-selinux
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -r /etc/os-release ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ . /etc/os-release
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ PRETTY_NAME=Debian GNU/Linux 12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ NAME=Debian GNU/Linux
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ VERSION_ID=12
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ VERSION=12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ VERSION_CODENAME=bookworm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ ID=debian
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ HOME_URL=https://www.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ SUPPORT_URL=https://www.debian.org/support
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ BUG_REPORT_URL=https://bugs.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ expr  : .*suse.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ debian = fedora ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ expr  : .*fedora.*\|.*rhel.*\|.*centos.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ type rpm-ostree
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ type zypper
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ type yum
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -d /usr/share/selinux ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ echo [WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m[WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -d /etc/zypp/repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ [ -d /etc/yum.repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ remove_uninstall
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ return 0
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -rf /var/lib/kubelet
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rpm_ostree_uninstall_cmd=rpm-ostree uninstall --idempotent k3s-selinux
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -r /etc/os-release ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ . /etc/os-release
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ PRETTY_NAME=Debian GNU/Linux 12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ NAME=Debian GNU/Linux
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ VERSION_ID=12
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ VERSION=12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ VERSION_CODENAME=bookworm
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ ID=debian
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ HOME_URL=https://www.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ SUPPORT_URL=https://www.debian.org/support
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ BUG_REPORT_URL=https://bugs.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ expr  : .*suse.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ debian = fedora ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ expr  : .*fedora.*\|.*rhel.*\|.*centos.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ type rpm-ostree
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ type zypper
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ type yum
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -d /usr/share/selinux ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ echo [WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m[WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -d /etc/zypp/repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ [ -d /etc/yum.repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ remove_uninstall
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"] (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-agent-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["publisher_node"]: Destruction complete after 3s[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_workers["actuator_node"]: Destruction complete after 3s[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Destroying... [id=ff06cef6-67ef-8cdf-d659-21e7d7c25652][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Provisioning with 'local-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.fetch_config (local-exec):[0m [0mExecuting: ["/bin/sh" "-c" "rm -f ./kubeconfig.yaml ./k3s_token.txt"]
+[0m[1mmodule.infrastructure.terraform_data.fetch_config: Destruction complete after 0s[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Destroying... [id=ba0e90af-7738-8121-f40d-620a7b31d9b1][0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Provisioning with 'remote-exec'...[0m[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mConnecting to remote host via SSH...
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Host: 192.168.0.204
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  User: pi1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Password: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Private key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Certificate: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  SSH Agent: true
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Checking Host Key: false
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m  Target Platform: unix
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mConnected!
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ 1000 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ exec sudo --preserve-env=K3S_DATA_DIR /usr/local/bin/k3s-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ id -u
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ 0 -eq 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ K3S_DATA_DIR=/var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -s /etc/systemd/system/k3s.service ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ basename /etc/systemd/system/k3s.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ systemctl stop k3s.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -x /etc/init.d/k3s* ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ killtree 700110 700130 700253 701615
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ kill -9 700110 700170 700860 700130 700177 702050 700253 700276 701278 701615 701638 701923 701978
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ do_unmount_and_remove /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/f93e0fd11adc6ee6c68bf11282b67714ce1a09bbc9ffb91f0e33abe22e9386d0/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/dbf43e606c4cf9f249cb4afcab846942c36c61fccfaa47c4051e7b3b64423239/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/95e862989008a83e1c524674e465fc45d5951156c0f031077f72ff213d5fd440/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/661c6a1d64769cfcfd4f9d0b41c830b5bf2dffcecdcc4b8aaa6bb7ecb047605f/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/5469599a6c74d0d9a56b3e5f9ae22a7d0b8290522490209d5141204895db07be/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/45cb46d7c2eeba3548ae712c486bf3a7b8fa7437e38ea8094609be4c2efcedfc/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/3447ee1f96a0535a20d54e3256f70645ff5efb39fd508f81e7b88290a282798e/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/14a59508c5bf22fe7bb7d9e9bcc43b39fd64e4f20642a959cafb186045f4fcff/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/10c12e8984efaa3cc4ade186a92a91029d2e945f8835a98da50bd3304cd898dd/rootfs
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/f93e0fd11adc6ee6c68bf11282b67714ce1a09bbc9ffb91f0e33abe22e9386d0/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/dbf43e606c4cf9f249cb4afcab846942c36c61fccfaa47c4051e7b3b64423239/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/661c6a1d64769cfcfd4f9d0b41c830b5bf2dffcecdcc4b8aaa6bb7ecb047605f/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/k3s/containerd/io.containerd.grpc.v1.cri/sandboxes/14a59508c5bf22fe7bb7d9e9bcc43b39fd64e4f20642a959cafb186045f4fcff/shm
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/pods
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /var/lib/kubelet/pods/995d1652-640a-461d-8f2e-607ef13c26e1/volumes/kubernetes.io~projected/kube-api-access-vqg6m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /var/lib/kubelet/pods/48f3b6b4-03fe-4c07-87c8-5deeb020445a/volumes/kubernetes.io~projected/kube-api-access-tnrfn
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /var/lib/kubelet/pods/41fea839-66a2-48c5-aab4-2661cbfd5dd4/volumes/kubernetes.io~projected/kube-api-access-h2zbg
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ do_unmount_and_remove /var/lib/kubelet/plugins
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ do_unmount_and_remove /run/netns/cni-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ set +x
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-9f022173-5c16-c5ec-861c-dc3f4716dda1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-58c34777-a206-c6f4-7635-e919d0cb75f1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-513f97ee-853e-a989-fef5-a792fe8e70b7
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0msh -c 'umount -f "$0" && rm -rf "$0"' /run/netns/cni-1aac8a36-3057-932a-28f1-b97019f6fd8d
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip netns show
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep cni-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ xargs -r -t -n 1 ip netns delete
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ remove_interfaces
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link show
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep master cni0
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ iface=veth7f2a1d18
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -z veth7f2a1d18 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete veth7f2a1d18
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ iface=veth8d1534db
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -z veth8d1534db ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete veth8d1534db
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "veth8d1534db"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ iface=veth4ee302ab
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -z veth4ee302ab ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete veth4ee302ab
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "veth4ee302ab"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ read ignore iface ignore
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete cni0
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete flannel.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete flannel-v6.1
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "flannel-v6.1"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete kube-ipvs0
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "kube-ipvs0"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete flannel-wg
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "flannel-wg"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip link delete flannel-wg-v6
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mCannot find device "flannel-wg-v6"
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ command -v tailscale
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -n  ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /var/lib/cni/
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ iptables-save
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ + grep -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mgrep -v KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep -iv flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ iptables-restore
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ip6tables-save
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep -v KUBE-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep -v CNI-
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep+ ip6tables-restore -iv flannel
+
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ command -v systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m/usr/bin/systemctl
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ systemctl disable k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0mRemoved "/etc/systemd/system/multi-user.target.wants/k3s.service".
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ systemctl reset-failed k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[0;1;31mFailed to reset failed state of unit k3s.service: Unit k3s.service not loaded.[0m
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ systemctl daemon-reload
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ command -v rc-update
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s.service
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -f /etc/systemd/system/k3s.service.env
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ trap remove_uninstall EXIT
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -L /usr/local/bin/kubectl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -L /usr/local/bin/crictl ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -L /usr/local/bin/ctr ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /etc/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /run/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /run/flannel
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ clean_mounted_directory /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ grep -q  /var/lib/rancher/k3s /proc/mounts
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /var/lib/rancher/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ return 0
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -rf /var/lib/kubelet
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-killall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rpm_ostree_uninstall_cmd=rpm-ostree uninstall --idempotent k3s-selinux
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -r /etc/os-release ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ . /etc/os-release
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ PRETTY_NAME=Debian GNU/Linux 12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ NAME=Debian GNU/Linux
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ VERSION_ID=12
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ VERSION=12 (bookworm)
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ VERSION_CODENAME=bookworm
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ ID=debian
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ HOME_URL=https://www.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ SUPPORT_URL=https://www.debian.org/support
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ BUG_REPORT_URL=https://bugs.debian.org/
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ expr  : .*suse.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ debian = fedora ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ expr  : .*fedora.*\|.*rhel.*\|.*centos.*
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ 0 != 0 ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ type rpm-ostree
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ type zypper
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ type yum
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -d /usr/share/selinux ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ echo [WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m[WARN] Automatic removal of "k3s-selinux" package not possible, please remove it manually.
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -d /etc/zypp/repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ [ -d /etc/yum.repos.d ]
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ remove_uninstall
+[0m[1mmodule.infrastructure.terraform_data.k3s_master (remote-exec):[0m [0m+ rm -f /usr/local/bin/k3s-uninstall.sh
+[0m[1mmodule.infrastructure.terraform_data.k3s_master: Destruction complete after 7s[0m
+[0m[1m[32m
+Destroy complete! Resources: 9 destroyed.[0m
+
+real	1m0.215s
+user	0m0.664s
+sys	0m0.168s

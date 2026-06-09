@@ -1,0 +1,29 @@
+Jun 09 12:06:36 raspberrypi-slave1 python3[711140]: E2EL: 23.41 ms | Command: CLOSE
+Jun 09 12:06:36 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:06:41 raspberrypi-slave1 python3[711140]: E2EL: 23.99 ms | Command: CLOSE
+Jun 09 12:06:41 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:06:46 raspberrypi-slave1 python3[711140]: E2EL: 23.75 ms | Command: CLOSE
+Jun 09 12:06:46 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:06:51 raspberrypi-slave1 python3[711140]: E2EL: 26.12 ms | Command: CLOSE
+Jun 09 12:06:51 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:06:56 raspberrypi-slave1 python3[711140]: E2EL: 24.46 ms | Command: OPEN
+Jun 09 12:06:56 raspberrypi-slave1 python3[711140]: Moving servo to 180 (OPEN)
+Jun 09 12:07:01 raspberrypi-slave1 python3[711140]: E2EL: 27.03 ms | Command: OPEN
+Jun 09 12:07:01 raspberrypi-slave1 python3[711140]: Moving servo to 180 (OPEN)
+Jun 09 12:07:06 raspberrypi-slave1 python3[711140]: E2EL: 24.42 ms | Command: CLOSE
+Jun 09 12:07:06 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:11 raspberrypi-slave1 python3[711140]: E2EL: 24.37 ms | Command: CLOSE
+Jun 09 12:07:11 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:16 raspberrypi-slave1 python3[711140]: E2EL: 24.00 ms | Command: CLOSE
+Jun 09 12:07:16 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:21 raspberrypi-slave1 python3[711140]: E2EL: 20.26 ms | Command: CLOSE
+Jun 09 12:07:21 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:26 raspberrypi-slave1 python3[711140]: E2EL: 23.54 ms | Command: CLOSE
+Jun 09 12:07:26 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:31 raspberrypi-slave1 python3[711140]: E2EL: 24.00 ms | Command: CLOSE
+Jun 09 12:07:31 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:36 raspberrypi-slave1 python3[711140]: E2EL: 25.69 ms | Command: CLOSE
+Jun 09 12:07:36 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:41 raspberrypi-slave1 python3[711140]: E2EL: 22.15 ms | Command: CLOSE
+Jun 09 12:07:41 raspberrypi-slave1 python3[711140]: Moving servo to 0 (CLOSE)
+Jun 09 12:07:46 raspberrypi-slave1 python3[711140]: E2EL: 24.12 ms | Command: CLOSE

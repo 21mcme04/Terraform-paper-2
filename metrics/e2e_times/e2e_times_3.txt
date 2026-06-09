@@ -1,0 +1,25 @@
+Jun 09 13:21:32 raspberrypi-slave1 python3[751999]: E2EL: 21.72 ms | Command: CLOSE
+Jun 09 13:21:32 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:21:37 raspberrypi-slave1 python3[751999]: E2EL: 25.50 ms | Command: CLOSE
+Jun 09 13:21:37 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:21:42 raspberrypi-slave1 python3[751999]: E2EL: 21.33 ms | Command: CLOSE
+Jun 09 13:21:42 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:21:47 raspberrypi-slave1 python3[751999]: E2EL: 26.22 ms | Command: CLOSE
+Jun 09 13:21:47 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:21:52 raspberrypi-slave1 python3[751999]: E2EL: 21.89 ms | Command: CLOSE
+Jun 09 13:21:52 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:21:57 raspberrypi-slave1 python3[751999]: E2EL: 25.99 ms | Command: OPEN
+Jun 09 13:21:57 raspberrypi-slave1 python3[751999]: Moving servo to 180 (OPEN)
+Jun 09 13:22:02 raspberrypi-slave1 python3[751999]: E2EL: 29.08 ms | Command: OPEN
+Jun 09 13:22:02 raspberrypi-slave1 python3[751999]: Moving servo to 180 (OPEN)
+Jun 09 13:22:07 raspberrypi-slave1 python3[751999]: E2EL: 22.71 ms | Command: OPEN
+Jun 09 13:22:07 raspberrypi-slave1 python3[751999]: Moving servo to 180 (OPEN)
+Jun 09 13:22:12 raspberrypi-slave1 python3[751999]: E2EL: 23.00 ms | Command: CLOSE
+Jun 09 13:22:12 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:22:17 raspberrypi-slave1 python3[751999]: E2EL: 25.21 ms | Command: OPEN
+Jun 09 13:22:17 raspberrypi-slave1 python3[751999]: Moving servo to 180 (OPEN)
+Jun 09 13:22:22 raspberrypi-slave1 python3[751999]: E2EL: 23.99 ms | Command: CLOSE
+Jun 09 13:22:22 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:22:27 raspberrypi-slave1 python3[751999]: E2EL: 24.52 ms | Command: CLOSE
+Jun 09 13:22:27 raspberrypi-slave1 python3[751999]: Moving servo to 0 (CLOSE)
+Jun 09 13:22:32 raspberrypi-slave1 python3[751999]: E2EL: 24.82 ms | Command: CLOSE
